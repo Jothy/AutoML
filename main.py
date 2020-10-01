@@ -16,7 +16,17 @@ print('Unseen Data For Predictions: ' + str(data_unseen.shape))
 from pycaret.regression import *
 exp_reg101 = setup(data = data, target = 'Price', session_id=123, html=False)
 
-best = compare_models(exclude = ['ransac'])
-print(models())
+#best = compare_models(exclude = ['ransac'])
+#print(models())
+
+catBoost=create_model('catboost')
+print(catBoost)
+
+tunedCATBoost=tune_model(catBoost)
+print(tunedCATBoost)
+
+plot_model(tunedCATBoost)
+
+plot_model(tunedCATBoost,plot='error')
 
 
